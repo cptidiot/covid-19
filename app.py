@@ -100,10 +100,3 @@ st.pyplot()
 prediction.MAPE_plot(test_df, result)
 st.pyplot()
 
-import os
-
-with open(os.path.join('/Users/marshall/Desktop/covid-19 model/streamlit/', 'Procfile'), "w") as file1:
-    toFile = 'web: sh setup.sh && streamlit run <app name>.py'
-
-file1.write(toFile)
-
