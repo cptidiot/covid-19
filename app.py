@@ -83,7 +83,7 @@ est_alpha = model.a
 est_b = model.b
 est_c = model.c
 
-forecast_period = st.slider("Forecast Length",0,60)
+forecast_period = st.slider("Forecast Length",1,60,value = 14)
 
 prediction = Predict_SIR(pred_period=forecast_period, S=S0, I=I0, R=R0, gamma=1/14,
                        a = est_alpha, c = est_c, b = est_b, past_days = train_df['Day'].max())
