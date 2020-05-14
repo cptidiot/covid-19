@@ -94,18 +94,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="4" />
+          <line>61</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>56</line>
-          <option name="timeStamp" value="7" />
+          <line>25</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
