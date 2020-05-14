@@ -103,5 +103,16 @@ def main():
         st.pyplot()
 
 
+    ## sidebar
+    st.sidebar.title("About")
+    st.sidebar.info(
+        "This app uses JHU data available in [Github]"
+        "(https://github.com/CSSEGISandData/COVID-19) repository.\n\n"
+        "It is maintained by Marshall Zhao. \n\n"
+        "Welcome to check out my flying videos [Here](https://www.bilibili.com/video/BV12Q4y1A7B1)"
+    )
+
+
+
 main()
 
