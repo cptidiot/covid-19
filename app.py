@@ -17,7 +17,7 @@ def main():
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to",
                             ('Data Exploratory', 'Forecast Model', 'SIR Simulation'))
-    
+
     st.sidebar.title("About")
     st.sidebar.info(
         "This app uses JHU data available in [Github]"
@@ -25,7 +25,7 @@ def main():
         "It is maintained by Marshall Zhao. \n\n"
         "Welcome to check out my flying videos [Here](https://www.bilibili.com/video/BV12Q4y1A7B1)"
     )
-
+    @st.cache
     if page == 'Data Exploratory':
         st.title('Explore County Level Data ')
         # load data
@@ -51,6 +51,7 @@ def main():
         d = base.encode(y='New deaths', color=red).properties(title='Daily New Deaths')
         st.altair_chart(d,use_container_width=True)
 
+    @st.cache
     elif page == 'SIR Simulation':
         st.title('SIR Simulation')
         st.subheader('This is toy for SIR model with customized parameters')
@@ -92,8 +93,9 @@ def main():
         for spine in ('top', 'right', 'bottom', 'left'):
             ax.spines[spine].set_visible(False)
         plt.show()
-        st.pyplot()
+        st.pyplot()\
 
+    @st.cache
     else:
         st.title('County Level Covid-19 Forecast Model')
         st.subheader('This is a demo of the dynamic SIR model')
