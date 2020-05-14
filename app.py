@@ -25,7 +25,7 @@ def main():
         "It is maintained by Marshall Zhao. \n\n"
         "Welcome to check out my flying videos [Here](https://www.bilibili.com/video/BV12Q4y1A7B1)"
     )
-    @st.cache
+
     if page == 'Data Exploratory':
         st.title('Explore County Level Data ')
         # load data
@@ -51,10 +51,10 @@ def main():
         d = base.encode(y='New deaths', color=red).properties(title='Daily New Deaths')
         st.altair_chart(d,use_container_width=True)
 
-    @st.cache
+
     elif page == 'SIR Simulation':
         st.title('SIR Simulation')
-        st.subheader('This is toy for SIR model with customized parameters')
+        st.subheader('SIR simulation with customized parameters')
         N = st.slider('Input the populaiton', 100000,10000000, step = 100000,value = 3000000)
         I0 = st.slider('Input initial infection',1,5000,step = 5,value = 200)
         R0 = st.slider('Input initial removed',0,1000,step = 1,value = 0)
@@ -95,7 +95,7 @@ def main():
         plt.show()
         st.pyplot()\
 
-    @st.cache
+
     else:
         st.title('County Level Covid-19 Forecast Model')
         st.subheader('This is a demo of the dynamic SIR model')

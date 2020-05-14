@@ -6,6 +6,7 @@ import datetime
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from math import *
+import streamlit as st
 
 
 
@@ -142,6 +143,7 @@ class Train_Dynamic_SIR:
         return self.estimation  # the lastest estimation
 
     # ------------------------------------------ Plots -----------------------------------------------------------------
+
     def plot_beta_R0(self, train_df):
 
         fig, ax = plt.subplots(2, 1, figsize=(16, 9), sharex='col')
@@ -160,6 +162,7 @@ class Train_Dynamic_SIR:
         ax[1].set_title('Fitted Dynamic R0', fontsize=15)
 
         plt.show()
+
 
     def plot_fitting(self, train_df):
 
@@ -235,6 +238,7 @@ class Predict_SIR:
         return self.results
 
     # -------------------------------------- Plots ----------------------------------------------------------------
+
     def plot(self, start , S=False):
 
         print("Maximum Active case: ",
@@ -265,6 +269,7 @@ class Predict_SIR:
         plt.show()
 
     # sensitivity analysis
+
     def MAPE_plot(self, test, predict_data):
         y = test["I"].reset_index(drop=True)
         y_pred = predict_data[:len(test)]['I'].reset_index(drop=True)
