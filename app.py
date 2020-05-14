@@ -14,6 +14,10 @@ from scipy.integrate import odeint
 
 def main():
     ## sidebar
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio("Go to",
+                            ('Data Exploratory', 'Forecast Model', 'SIR Simulation'))
+    
     st.sidebar.title("About")
     st.sidebar.info(
         "This app uses JHU data available in [Github]"
@@ -21,9 +25,7 @@ def main():
         "It is maintained by Marshall Zhao. \n\n"
         "Welcome to check out my flying videos [Here](https://www.bilibili.com/video/BV12Q4y1A7B1)"
     )
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to",
-                             ('Data Exploratory', 'Forecast Model','SIR Simulation'))
+
     if page == 'Data Exploratory':
         st.title('Explore County Level Data ')
         # load data
