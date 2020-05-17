@@ -102,9 +102,22 @@ def main():
         selected = st.radio('Select a county for demo',('NYC','Westerchester','Nassau'))
         df2 = load_data('{}.pkl'.format(selected.lower()))
 
-        if st.checkbox('Show raw data'):
+        if st.checkbox('Show Raw Data'):
             st.write(df2)
-
+        if st.checkbox('Visualization Chart'):
+            a1 = df2[['Date', 'I']]
+            a1['type'] = 'I'
+            a1.rename(columns={'I': 'value'}, inplace=True)
+            b1 = df2[['Date', 'R']]
+            b1['type'] = 'R'
+            b1.rename(columns={'R': 'value'}, inplace=True);
+            e = pd.concat([a1,b1])
+            e = alt.Chart(e).mark_bar().encode(
+                     x='monthdate(Date):O',
+                     y='value:Q',
+                     color = 'type:N'
+            )
+            st.altair_chart(e, use_container_width=True)
 
         ## Model training
 
