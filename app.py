@@ -139,7 +139,7 @@ def main():
         model.plot_beta_R0(train_df)
         st.pyplot()
 
-        "## Let's go head forecasting the future"
+        "## Future Forecast"
 
         # initialize parameters for prediction
         population = model.population
