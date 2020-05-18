@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aa356769-3f00-4b03-80fb-149f6e274a19" name="Default Changelist" comment="resolve confilt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nassau.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_york_data.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nyc.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/total_data.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/westerchester.pkl" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
