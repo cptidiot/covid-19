@@ -16,13 +16,9 @@ def main():
     ## sidebar
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to",
-                            ('Data Exploratory', 'Forecast Model', 'SIR Simulation'))
+                            ( 'Forecast Model','Data Exploratory', 'SIR Simulation'))
 
-    st.sidebar.title("About")
-    st.sidebar.info(
-        "This app uses JHU data available in [Github]"
-        "(https://github.com/CSSEGISandData/COVID-19) repository.\n\n"
-    )
+
 
     if page == 'Data Exploratory':
         st.title('Explore County Level Data ')
@@ -97,7 +93,8 @@ def main():
     else:
         st.title('County Level Covid-19 Forecast Model')
         st.subheader('This is a demo of the dynamic SIR model')
-        selected = st.radio('Select a county for demo',('NYC','Westerchester','Nassau'))
+        states = st.selectbox('Select a state',('New York','New Jersey'))
+        selected = st.selectbox('Select a county for demo',('NYC','Westerchester','Nassau'))
         df2 = load_data('{}.pkl'.format(selected.lower()))
 
         if st.checkbox('Show Raw Data'):
@@ -110,7 +107,7 @@ def main():
             b1['type'] = 'R'
             b1.rename(columns={'R': 'value'}, inplace=True);
             e = pd.concat([a1,b1])
-            e = alt.Chart(e).mark_bar().encode(
+            e = alt.Chart(e).mark_line().encode(
                      x='monthdate(Date):O',
                      y='value:Q',
                      color = 'type:N'
@@ -152,7 +149,7 @@ def main():
         est_c = model.c
 
 
-        forecast_period = st.slider("Choose the forecast period(days)", 5, 60, value=21)
+        forecast_period = st.slider("Choose the forecast period(days)", 5, 60,step = 7, value=21)
 
         prediction = Predict_SIR(pred_period=forecast_period, S=S0, I=I0, R=R0, gamma=1 / 14,
                                  a=est_alpha, c=est_c, b=est_b, past_days=train_df['Day'].max())
@@ -170,6 +167,12 @@ def main():
         '**Accuracy: Real data VS Predicted**'
         prediction.MAPE_plot(test_df, result)
         st.pyplot()
+
+        st.title("About")
+        st.info(
+            "This app uses JHU data available in [Github]"
+            "(https://github.com/CSSEGISandData/COVID-19) repository.\n\n"
+        )
 
 main()
 
