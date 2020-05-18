@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa356769-3f00-4b03-80fb-149f6e274a19" name="Default Changelist" comment="resolve confilt">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/streamlit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/streamlit.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
@@ -31,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -76,6 +78,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="resolve confilt" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="40" y="125" width="1071" height="699" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589779469584">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="40" y="125" width="1071" height="699" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1589779469584" />
     <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589400500114">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -84,10 +90,14 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="157" y="38" key="CommitChangelistDialog2/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589402949060" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589757651712">
+    <state x="0" y="100" key="SettingsEditor" timestamp="1589779355595">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589779355595" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589779120417">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="374" y="296" key="com.intellij.ide.util.TipDialog/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589416117177" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589757651712" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589779120417" />
   </component>
 </project>

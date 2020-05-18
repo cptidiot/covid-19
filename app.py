@@ -22,8 +22,6 @@ def main():
     st.sidebar.info(
         "This app uses JHU data available in [Github]"
         "(https://github.com/CSSEGISandData/COVID-19) repository.\n\n"
-        "It is maintained by Marshall Zhao. \n\n"
-        "Welcome to check out my flying videos [Here](https://www.bilibili.com/video/BV12Q4y1A7B1)"
     )
 
     if page == 'Data Exploratory':
@@ -127,15 +125,16 @@ def main():
 
         # initialize model
         '## Training the Model'
-        population = df2.Population[1]
-        model = Train_Dynamic_SIR(epoch=1000, data=train_df,
-                                  population=population, gamma=1 / 14, c=1, b=-10, a=0.08)
+        with st.spinner('Model Training in Progress...'):
+            population = df2.Population[1]
+            model = Train_Dynamic_SIR(epoch=3000, data=train_df,
+                                      population=population, gamma=1 / 14, c=1, b=-10, a=0.08)
 
-        # train the model
-        estimate_df = model.train()
+            # train the model
+            estimate_df = model.train()
 
         # drawing
-        'Training is completed, here is the result of the best fitted parameters'
+        st.success('Training is completed, here is the result of the best fitted parameters')
 
         model.plot_beta_R0(train_df)
         st.pyplot()
@@ -153,12 +152,12 @@ def main():
         est_c = model.c
 
 
-        forecast_period = st.slider("Choose the forecast period", 5, 60, value=14)
+        forecast_period = st.slider("Choose the forecast period(days)", 5, 60, value=21)
 
         prediction = Predict_SIR(pred_period=forecast_period, S=S0, I=I0, R=R0, gamma=1 / 14,
                                  a=est_alpha, c=est_c, b=est_b, past_days=train_df['Day'].max())
 
-        deaths = st.slider("Input a realistic death rate ", 0.0, 0.3, value = 0.1)
+        deaths = st.slider("Input a realistic death rate(%) ", 0, 30, value = 8)/100
 
         result = prediction.run(death_rate=deaths)  # death_rate is an assumption
 
