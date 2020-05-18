@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import altair as alt
-import seaborn as sns; sns.set()
+#import seaborn as sns; sns.set()
 from helpers import *
 from SIR_Model import *
 from scipy.integrate import odeint
@@ -91,8 +91,8 @@ def main():
 
 
     else:
-        st.title('County Level Covid-19 Forecast Model')
-        st.subheader('This is a demo of the dynamic SIR model')
+        '## County Level Covid-19 Forecast Model'
+        'This is a demo of the dynamic SIR model'
         states = st.selectbox('Select a state',('New York','New Jersey'))
         selected = st.selectbox('Select a county for demo',('NYC','Westerchester','Nassau'))
         df2 = load_data('{}.pkl'.format(selected.lower()))
@@ -101,17 +101,21 @@ def main():
             st.write(df2)
         if st.checkbox('Visualization Chart'):
             a1 = df2[['Date', 'I']]
-            a1['type'] = 'I'
+            a1['type'] = 'Active Infection Cases'
             a1.rename(columns={'I': 'value'}, inplace=True)
             b1 = df2[['Date', 'R']]
-            b1['type'] = 'R'
+            b1['type'] = 'Recovered Cases'
             b1.rename(columns={'R': 'value'}, inplace=True);
             e = pd.concat([a1,b1])
             e = alt.Chart(e).mark_line().encode(
-                     x='monthdate(Date):O',
-                     y='value:Q',
-                     color = 'type:N'
+
+             #   x=alt.X('monthdate(Date):O',title = 'Date'),
+                x=alt.X('Date:T', title='Date'),
+
+                y=alt.Y('value:Q',title = 'Number of Cases'),
+                color = alt.Color('type:O',legend = alt.Legend(title = None,orient = 'bottom-right'))
             )
+
             st.altair_chart(e, use_container_width=True)
 
         ## Model training
@@ -121,7 +125,7 @@ def main():
         test_df = df2[(df2['Date'] > '2020-04-20') & (df2['Date'] < '2020-05-01')]
 
         # initialize model
-        '## Training the Model'
+        #'## Training the Model'
         with st.spinner('Model Training in Progress...'):
             population = df2.Population[1]
             model = Train_Dynamic_SIR(epoch=3000, data=train_df,
@@ -131,10 +135,11 @@ def main():
             estimate_df = model.train()
 
         # drawing
-        st.success('Training is completed, here is the result of the best fitted parameters')
+     #   st.success('Training is completed, here is the result of the best fitted parameters')
 
-        model.plot_beta_R0(train_df)
-        st.pyplot()
+        #model.plot_beta_R0(train_df)
+        #st.pyplot()
+
 
         "## Future Forecast"
 

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 import datetime
 
 from sklearn.metrics import mean_absolute_error
@@ -247,10 +248,10 @@ class Predict_SIR:
         fig, ax = plt.subplots(figsize=(16, 9))
 
         if S is True:
-            plt.plot(self.results['Time'], self.results['S'], color='blue')
+            plt.plot(self.results['Time'], self.results['S'], color='green')
         plt.plot(self.results['Time'], self.results['I'], color='red')
-        plt.plot(self.results['Time'], self.results['R'], color='palegreen')
-        plt.plot(self.results['Time'], self.results['Heal'], color='green')
+   #     plt.plot(self.results['Time'], self.results['R'], color='palegreen')
+        plt.plot(self.results['Time'], self.results['Heal'], color='blue')
         plt.plot(self.results['Time'], self.results['Death'], color='grey')
 
         # set x trick
@@ -261,11 +262,13 @@ class Predict_SIR:
 
         # legend
         if S is True:
-            plt.legend(['Susceptible', 'Infected', 'Removed', 'Heal', 'Death'], fontsize='large')
+            plt.legend(['Susceptible', 'Infected', 'Recovered', 'Death'], fontsize='large')
         else:
-            plt.legend(['Infected', 'Removed', 'Heal', 'Death'], fontsize='large')
-
-        plt.title('Prediction', fontsize=15)
+            plt.legend(['Infected', 'Recovered', 'Death'], fontsize='large')
+        ax.set_facecolor('#FAFAFA')
+        ax.get_yaxis().set_major_formatter(
+            matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+        plt.title('Prediction', fontsize=20)
         plt.show()
 
     # sensitivity analysis
@@ -281,8 +284,10 @@ class Predict_SIR:
 
         plt.plot(test['Date'], y, color='steelblue')
         plt.plot(pd.date_range('2020-04-20', periods=self.pred_period, freq='d'), predict_data['I'], color='orangered')
+        ax.set_facecolor('#FAFAFA')
+        ax.get_yaxis().set_major_formatter(
+            matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
 
-        plt.title('Predicted VS Real Infection', fontsize=15)
-        plt.legend(['Observation', 'Prediction'], loc='upper left', prop={'size': 12},
-                   fancybox=True, shadow=True)
+        plt.title('Predicted VS Real Infection', fontsize=20)
+        plt.legend(['Observation', 'Prediction'], loc='upper right', prop={'size': 12})
         plt.show()

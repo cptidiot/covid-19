@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="aa356769-3f00-4b03-80fb-149f6e274a19" name="Default Changelist" comment="resolve confilt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SIR_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIR_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="covid-19-SIR-streamlit" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -92,10 +96,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589779355595" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589825638924">
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589828287160">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="374" y="296" key="com.intellij.ide.util.TipDialog/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589416117177" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589825638924" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589828287160" />
   </component>
 </project>
