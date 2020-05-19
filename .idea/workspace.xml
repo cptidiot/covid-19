@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa356769-3f00-4b03-80fb-149f6e274a19" name="Default Changelist" comment="resolve confilt">
+      <change afterPath="$PROJECT_DIR$/fetch_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIR_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIR_Model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/total_data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/total_data.pkl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +26,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1brfJhUlE8mirKMqqG9yIq8ppAI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
@@ -74,6 +78,7 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="My first commit" />
     <MESSAGE value="Merge branch 'master' of https://git.heroku.com/sir-covid-19&#10;&#10;# Conflicts:&#10;#&#9;requirements.txt" />
     <MESSAGE value="resolve confilt" />
@@ -96,10 +101,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589779355595" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589828287160">
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589910936870">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="374" y="296" key="com.intellij.ide.util.TipDialog/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589416117177" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589828287160" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589910936870" />
   </component>
 </project>
