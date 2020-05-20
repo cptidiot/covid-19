@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa356769-3f00-4b03-80fb-149f6e274a19" name="Default Changelist" comment="resolve confilt">
-      <change afterPath="$PROJECT_DIR$/fetch_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Suffolk.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/new york city.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/westchester.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_prep.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/total_data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/total_data.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SIR_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIR_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nassau.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/nassau.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/new_york_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nyc.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/westerchester.pkl" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +48,34 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="data_prep" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="streamlit" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_prep.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.data_prep" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -89,22 +125,43 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="40" y="125" width="1071" height="699" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1589779469584" />
-    <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589400500114">
+    <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589923406385">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589400500114" />
+    <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1589923406385" />
     <state x="157" y="38" key="CommitChangelistDialog2" timestamp="1589402949060">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="157" y="38" key="CommitChangelistDialog2/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589402949060" />
-    <state x="0" y="100" key="SettingsEditor" timestamp="1589779355595">
+    <state width="1101" height="230" key="GridCell.Tab.0.bottom" timestamp="1589920324998">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589779355595" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589910936870">
+    <state width="1101" height="230" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1589920324998" />
+    <state width="1101" height="230" key="GridCell.Tab.0.center" timestamp="1589920324998">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1101" height="230" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1589920324998" />
+    <state width="1101" height="230" key="GridCell.Tab.0.left" timestamp="1589920324997">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1101" height="230" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1589920324997" />
+    <state width="1101" height="230" key="GridCell.Tab.0.right" timestamp="1589920324998">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1101" height="230" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1589920324998" />
+    <state x="0" y="100" key="SettingsEditor" timestamp="1589919377209">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589919377209" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589918779657">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="374" y="296" key="com.intellij.ide.util.TipDialog/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589416117177" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589910936870" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589918779657" />
+    <state x="226" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1589919348885">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="226" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1589919348885" />
   </component>
 </project>

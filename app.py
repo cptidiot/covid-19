@@ -6,11 +6,12 @@ import altair as alt
 #import seaborn as sns; sns.set()
 from helpers import *
 from SIR_Model import *
+from data_prep import *
 from scipy.integrate import odeint
 
-
-
-
+clean('"New York City, New York, US"')
+clean('"Westchester, New York, US"')
+clean('"Nassau, New York, US"')
 
 def main():
     ## sidebar
@@ -49,7 +50,7 @@ def main():
     elif page == 'SIR Simulation':
         st.title('SIR Simulation')
         st.subheader('SIR simulation with customized parameters')
-        N = st.slider('Input the populaiton', 100000,10000000, step = 100000,value = 3000000)
+        N = st.slider('Input the population', 100000,10000000, step = 100000,value = 3000000)
         I0 = st.slider('Input initial infection',1,5000,step = 5,value = 200)
         R0 = st.slider('Input initial removed',0,1000,step = 1,value = 0)
         beta = st.number_input('Input beta', min_value=0.0, max_value=10.0,value = 0.2)
@@ -94,7 +95,7 @@ def main():
         '## County Level Covid-19 Forecast Model'
         'This is a demo of the dynamic SIR model'
         states = st.selectbox('Select a state',('New York','New Jersey'))
-        selected = st.selectbox('Select a county for demo',('NYC','Westerchester','Nassau'))
+        selected = st.selectbox('Select a county for demo',('New York City','Westchester','Nassau'))
         df2 = load_data('{}.pkl'.format(selected.lower()))
 
         if st.checkbox('Show Raw Data'):
@@ -121,15 +122,15 @@ def main():
         ## Model training
 
         # split train dataset
-        train_df = df2[df2['Date'] < '2020-04-20']
-        test_df = df2[(df2['Date'] > '2020-04-20') & (df2['Date'] < '2020-05-01')]
+        train_df = df2[df2['Date'] < df2.Date.iloc[-7]]
+        test_df = df2[(df2['Date'] > df2.Date.iloc[-7]) & (df2['Date'] < df2.Date.iloc[-1])]
 
         # initialize model
         #'## Training the Model'
         with st.spinner('Model Training in Progress...'):
             population = df2.Population[1]
-            model = Train_Dynamic_SIR(epoch=3000, data=train_df,
-                                      population=population, gamma=1 / 14, c=1, b=-10, a=0.08)
+            model = Train_Dynamic_SIR(epoch=5000, data=train_df,
+                                      population=population, gamma=1 / 15, c=1, b=-10, a=0.08)
 
             # train the model
             estimate_df = model.train()
@@ -154,7 +155,7 @@ def main():
         est_c = model.c
 
 
-        forecast_period = st.slider("Choose the forecast period(days)", 5, 60,step = 7, value=21)
+        forecast_period = st.slider("Choose the forecast period(days)", 5, 60,step =5, value=21)
 
         prediction = Predict_SIR(pred_period=forecast_period, S=S0, I=I0, R=R0, gamma=1 / 14,
                                  a=est_alpha, c=est_c, b=est_b, past_days=train_df['Day'].max())

@@ -283,7 +283,7 @@ class Predict_SIR:
         fig, ax = plt.subplots(figsize=(16, 9))
 
         plt.plot(test['Date'], y, color='steelblue')
-        plt.plot(pd.date_range('2020-04-20', periods=self.pred_period, freq='d'), predict_data['I'], color='orangered')
+        plt.plot(pd.date_range(test.Date.iloc[0], periods=self.pred_period, freq='d'), predict_data['I'], color='orangered')
         ax.set_facecolor('#FAFAFA')
         ax.get_yaxis().set_major_formatter(
             matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
