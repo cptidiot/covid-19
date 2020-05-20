@@ -101,19 +101,23 @@ def main():
         if st.checkbox('Show Raw Data'):
             st.write(df2)
         if st.checkbox('Visualization Chart'):
-            a1 = df2[['Date', 'I']]
-            a1['type'] = 'Active Infection Cases'
-            a1.rename(columns={'I': 'value'}, inplace=True)
-            b1 = df2[['Date', 'R']]
-            b1['type'] = 'Recovered Cases'
-            b1.rename(columns={'R': 'value'}, inplace=True);
-            e = pd.concat([a1,b1])
+            df_temp = df2.rename(columns = {'I':'Active Infection Cases','R':'Recovered Cases'})
+            e = pd.melt(frame = df_temp,
+                       id_vars='Date',
+                       value_vars=['Active Infection Cases','Recovered Cases'],
+                       var_name = 'type',
+                       value_name = 'count')
+
+          #  a1 = df2[['Date', 'I']]
+          #  a1['type'] = 'Active Infection Cases'
+          #  a1.rename(columns={'I': 'value'}, inplace=True)
+          #  b1 = df2[['Date', 'R']]
+          #  b1['type'] = 'Recovered Cases'
+          #  b1.rename(columns={'R': 'value'}, inplace=True);
+          #  e = pd.concat([a1,b1])
             e = alt.Chart(e).mark_line().encode(
-
-             #   x=alt.X('monthdate(Date):O',title = 'Date'),
                 x=alt.X('Date:T', title='Date'),
-
-                y=alt.Y('value:Q',title = 'Number of Cases'),
+                y=alt.Y('count:Q',title = 'Number of Cases'),
                 color = alt.Color('type:O',legend = alt.Legend(title = None,orient = 'bottom-right'))
             )
 

@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa356769-3f00-4b03-80fb-149f6e274a19" name="Default Changelist" comment="resolve confilt">
-      <change afterPath="$PROJECT_DIR$/data/Suffolk.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/new york city.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/westchester.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_prep.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Untitled.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIR_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIR_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/nassau.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/nassau.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/new_york_data.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/nyc.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/westerchester.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/new york city.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/new york city.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/westchester.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/westchester.pkl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,11 +149,11 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589919377209" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1589918779657">
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1590013221760">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="374" y="296" key="com.intellij.ide.util.TipDialog/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589416117177" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1589918779657" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1590013221760" />
     <state x="226" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1589919348885">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
