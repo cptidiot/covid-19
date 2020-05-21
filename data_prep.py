@@ -10,6 +10,7 @@ def county_file(county):
     countyfile.to_pickle('./data/{}.pkl'.format(county[1:].split(',')[0].lower()))
 
 
+
 def fill_recovery(county_data):
     df = pd.read_pickle(county_data)
 
