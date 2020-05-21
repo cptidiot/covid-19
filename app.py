@@ -9,9 +9,6 @@ from SIR_Model import *
 from data_prep import *
 from scipy.integrate import odeint
 
-clean('"New York City, New York, US"')
-clean('"Westchester, New York, US"')
-clean('"Nassau, New York, US"')
 
 def main():
     ## sidebar
@@ -134,7 +131,7 @@ def main():
         with st.spinner('Model Training in Progress...'):
             population = df2.Population[1]
             model = Train_Dynamic_SIR(epoch=5000, data=train_df,
-                                      population=population, gamma=1 / 15, c=1, b=-10, a=0.08)
+                                    population=population, gamma=1 / 15, c=1, b=-10, a=0.08)
 
             # train the model
             estimate_df = model.train()
