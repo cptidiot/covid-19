@@ -8,26 +8,104 @@ from helpers import *
 from SIR_Model import *
 from data_prep import *
 from scipy.integrate import odeint
+import plotly.graph_objects as go
+
 
 
 def main():
     ## sidebar
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to",
-                            ( 'Forecast Model','Data Exploratory', 'SIR Simulation'))
+                            ('Data Exploratory', 'Forecast Model', 'SIR Simulation'))
+    st.sidebar.title("About")
+    st.sidebar.info(
+            "This app uses JHU data available in [Github]"
+            "(https://github.com/CSSEGISandData/COVID-19) repository.\n\n"
+            "It is maintained by Marshall Zhao.\n\n"
+        
+        )
 
 
 
     if page == 'Data Exploratory':
-        st.title('Explore County Level Data ')
-        # load data
+        '## Explore the COVID-19 Stats in USA'
+        '### Quick Facts'
+        # load data 
         total = load_data('total_data.pkl')
+
+        facts_df = total.groupby('Date')[['Confirmed','Deaths','New Cases','New deaths']].sum().reset_index()
+
+        fig = go.Figure()
+
+        fig.add_trace(go.Indicator(
+            mode = "number+delta",
+            value = facts_df.iloc[-1]['Confirmed'],
+            title = {"text":'Total Confirmed Cases'},
+            domain = {'x': [0, 0.3], 'y': [0, 1]},
+            delta = {'reference': facts_df.iloc[-2]['Confirmed']}))
+
+        fig.add_trace(go.Indicator(
+            mode = "number+delta",
+            value = facts_df.iloc[-1]['New Cases'],
+            title = {"text":'Daily New Cases'},
+            delta = {'reference': facts_df.iloc[-2]['New Cases']},
+            domain = {'x': [0.415, 0.7], 'y': [0, 1]}))
+
+        fig.add_trace(go.Indicator(
+            mode = "number+delta",
+            value = facts_df.iloc[-1]['New deaths'],
+            title = {"text": "Daily New Deaths"},
+            delta = {'reference': facts_df.iloc[-2]['New deaths']},
+            domain = {'x': [0.834, 1], 'y': [0, 1]}))
+        fig.update_layout(
+          autosize=False,
+          width=700,
+          height=250)
+
+        st.plotly_chart(fig)
+
+
+        '### Go to County Data'
         # filter target county
         county_name = total['Combined_Key'].unique()
         county = st.selectbox("Select a County", county_name)
         df = total.loc[total['Combined_Key'] == county]
 
-        # drawing
+        # drawing 
+        ## indicator plot
+        fig2 = go.Figure()
+
+        fig2.add_trace(go.Indicator(
+            mode = "number+delta",
+            value = df.iloc[-1]['Confirmed'],
+            title = {"text":'Total Confirmed Cases'},
+            domain = {'x': [0, 0.26], 'y': [0, 1]},
+            delta = {'reference': df.iloc[-2]['Confirmed']}))
+
+        fig2.add_trace(go.Indicator(
+            mode = "number+delta",
+            value = df.iloc[-1]['New Cases'],
+            title = {"text":'Daily New Cases'},
+            delta = {'reference': df.iloc[-2]['New Cases']},
+            domain = {'x': [0.45, 0.65], 'y': [0, 1]}))
+
+        fig2.add_trace(go.Indicator(
+            mode = "number+delta",
+            value = df.iloc[-1]['New deaths'],
+            title = {"text": "Daily New Deaths"},
+            delta = {'reference': df.iloc[-2]['New deaths']},
+            domain = {'x': [0.89, 1], 'y': [0, 1]}))
+
+        fig2.update_layout(
+          autosize=False,
+          width=700,
+          height=260)
+        st.plotly_chart(fig2)
+
+        
+
+
+
         base = alt.Chart(df).mark_bar().encode( x='monthdate(Date):O',).properties(width=500)
 
         red = alt.value('#f54242')
@@ -90,13 +168,12 @@ def main():
 
     else:
         '## County Level Covid-19 Forecast Model'
-        'This is a demo of the dynamic SIR model'
-        states = st.selectbox('Select a state',('New York','New Jersey'))
-        selected = st.selectbox('Select a county for demo',('New York City','Westchester','Nassau'))
-        df2 = load_data('{}.pkl'.format(selected.lower()))
+        'This is a demo of the dynamic SIR model using NYC as an example'
+      #  selected = st.selectbox('Select a county for demo',('New York City','Westchester','Nassau'))
+        df2 = load_data('{}.pkl'.format('New York City'.lower()))
 
         if st.checkbox('Show Raw Data'):
-            st.write(df2)
+            st.write(df2[['Confirmed','Deaths','Recovered','Date','New Cases','Combined_Key','Population']])
         if st.checkbox('Visualization Chart'):
             df_temp = df2.rename(columns = {'I':'Active Infection Cases','R':'Recovered Cases'})
             e = pd.melt(frame = df_temp,
@@ -105,17 +182,11 @@ def main():
                        var_name = 'type',
                        value_name = 'count')
 
-          #  a1 = df2[['Date', 'I']]
-          #  a1['type'] = 'Active Infection Cases'
-          #  a1.rename(columns={'I': 'value'}, inplace=True)
-          #  b1 = df2[['Date', 'R']]
-          #  b1['type'] = 'Recovered Cases'
-          #  b1.rename(columns={'R': 'value'}, inplace=True);
-          #  e = pd.concat([a1,b1])
-            e = alt.Chart(e).mark_line().encode(
+
+            e = alt.Chart(e).mark_area().encode(
                 x=alt.X('Date:T', title='Date'),
                 y=alt.Y('count:Q',title = 'Number of Cases'),
-                color = alt.Color('type:O',legend = alt.Legend(title = None,orient = 'bottom-right'))
+                color = alt.Color('type:O',legend = alt.Legend(title = None,orient = 'top-left'))
             )
 
             st.altair_chart(e, use_container_width=True)
@@ -127,7 +198,7 @@ def main():
         test_df = df2[(df2['Date'] > df2.Date.iloc[-7]) & (df2['Date'] < df2.Date.iloc[-1])]
 
         # initialize model
-        #'## Training the Model'
+        '## Training the Model'
         with st.spinner('Model Training in Progress...'):
             population = df2.Population[1]
             model = Train_Dynamic_SIR(epoch=5000, data=train_df,
@@ -137,10 +208,10 @@ def main():
             estimate_df = model.train()
 
         # drawing
-     #   st.success('Training is completed, here is the result of the best fitted parameters')
+            st.success('Training is completed, here is the result of the best fitted parameters')
 
-        #model.plot_beta_R0(train_df)
-        #st.pyplot()
+        model.plot_beta_R0(train_df)
+        st.pyplot()
 
 
         "## Future Forecast"
@@ -175,11 +246,7 @@ def main():
         prediction.MAPE_plot(test_df, result)
         st.pyplot()
 
-        st.title("About")
-        st.info(
-            "This app uses JHU data available in [Github]"
-            "(https://github.com/CSSEGISandData/COVID-19) repository.\n\n"
-        )
+        
 
 main()
 
