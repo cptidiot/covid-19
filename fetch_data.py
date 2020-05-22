@@ -13,7 +13,7 @@ import re
 def fetch_data(url):
     r = requests.get(url)
     html_doc = r.text
-    soup = BeautifulSoup(html_doc)
+    soup = BeautifulSoup(html_doc,features="lxml")
     a_tags = soup.find_all('a')
     urls = ['https://raw.githubusercontent.com' + re.sub('/blob', '', link.get('href'))
             for link in a_tags if '.csv' in link.get('href')]
@@ -47,7 +47,7 @@ def data_cleaning(dfs, all_files):
 
 def match_population(fips_url):
     fips = pd.read_csv(fips_url)
-    return data.merge(fips[['Population', 'Combined_Key']], how='left', on='Combined_Key')
+    return data.merge(fips[['Population', 'Combined_Key','FIPS']], how='left', on='Combined_Key')
 
 
 def total_data(data):
