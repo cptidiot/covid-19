@@ -54,7 +54,7 @@ def main():
                     value = facts_df.iloc[-1]['New Cases'],
                     title = {"text":'Daily New Cases'},
                     delta = {'reference': facts_df.iloc[-2]['New Cases']},
-                    domain = {'x': [0.4, 0.65], 'y': [0, 1]}
+                    domain = {'x': [0.415, 0.665], 'y': [0, 1]}
                             )
                     )
         fig.update_layout(
@@ -101,7 +101,7 @@ def main():
             value = df.iloc[-1]['New Cases'],
             title = {"text":'Daily New Cases'},
             delta = {'reference': df.iloc[-2]['New Cases']},
-            domain = {'x': [0.4, 0.65], 'y': [0, 1]}))
+            domain = {'x': [0.415, 0.665], 'y': [0, 1]}))
 
         fig2.add_trace(go.Indicator(
             mode = "number+delta",
