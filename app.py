@@ -30,6 +30,7 @@ def main():
     if page == 'Data Exploratory':
         '## Explore the COVID-19 Stats in USA'
         '### Quick Facts'
+        
         # load data 
         total = load_data('total_data.pkl')
 
@@ -37,30 +38,43 @@ def main():
 
         fig = go.Figure()
 
-        fig.add_trace(go.Indicator(
-            mode = "number+delta",
-            value = facts_df.iloc[-1]['Confirmed'],
-            title = {"text":'Total Confirmed Cases'},
-            domain = {'x': [0, 0.3], 'y': [0, 1]},
-            delta = {'reference': facts_df.iloc[-2]['Confirmed']}))
+        fig.add_trace(
+                go.Indicator(
+                    mode = "number+delta",
+                    value = facts_df.iloc[-1]['Confirmed'],
+                    title = {"text":'Total Confirmed Cases'},
+                    domain = {'x': [0, 0.28], 'y': [0, 1]},
+                    delta = {'reference': facts_df.iloc[-2]['Confirmed']}
+                            )
+                      )
 
-        fig.add_trace(go.Indicator(
-            mode = "number+delta",
-            value = facts_df.iloc[-1]['New Cases'],
-            title = {"text":'Daily New Cases'},
-            delta = {'reference': facts_df.iloc[-2]['New Cases']},
-            domain = {'x': [0.415, 0.68], 'y': [0, 1]}))
-
-        fig.add_trace(go.Indicator(
-            mode = "number+delta",
-            value = facts_df.iloc[-1]['New deaths'],
-            title = {"text": "Daily New Deaths"},
-            delta = {'reference': facts_df.iloc[-2]['New deaths']},
-            domain = {'x': [0.834, 1], 'y': [0, 1]}))
+        fig.add_trace(
+                go.Indicator(
+                    mode = "number+delta",
+                    value = facts_df.iloc[-1]['New Cases'],
+                    title = {"text":'Daily New Cases'},
+                    delta = {'reference': facts_df.iloc[-2]['New Cases']},
+                    domain = {'x': [0.4, 0.65], 'y': [0, 1]}
+                            )
+                    )
         fig.update_layout(
-          autosize=False,
-          width=700,
-          height=250)
+                grid = {'rows': 1, 'columns': 2, 'pattern': "independent"})
+
+
+        fig.add_trace(
+                go.Indicator(
+                    mode = "number+delta",
+                    value = facts_df.iloc[-1]['New deaths'],
+                    title = {"text": "Daily New Deaths"},
+                    delta = {'reference': facts_df.iloc[-2]['New deaths']},
+                    domain = {'x': [0.8,1], 'y': [0, 1]}
+                            )
+                    )
+        
+        fig.update_layout(
+                  height=250
+                          )
+
 
         st.plotly_chart(fig)
 
@@ -79,7 +93,7 @@ def main():
             mode = "number+delta",
             value = df.iloc[-1]['Confirmed'],
             title = {"text":'Total Confirmed Cases'},
-            domain = {'x': [0, 0.26], 'y': [0, 1]},
+            domain = {'x': [0, 0.28], 'y': [0, 1]},
             delta = {'reference': df.iloc[-2]['Confirmed']}))
 
         fig2.add_trace(go.Indicator(
@@ -87,14 +101,14 @@ def main():
             value = df.iloc[-1]['New Cases'],
             title = {"text":'Daily New Cases'},
             delta = {'reference': df.iloc[-2]['New Cases']},
-            domain = {'x': [0.45, 0.65], 'y': [0, 1]}))
+            domain = {'x': [0.4, 0.65], 'y': [0, 1]}))
 
         fig2.add_trace(go.Indicator(
             mode = "number+delta",
             value = df.iloc[-1]['New deaths'],
             title = {"text": "Daily New Deaths"},
             delta = {'reference': df.iloc[-2]['New deaths']},
-            domain = {'x': [0.89, 1], 'y': [0, 1]}))
+            domain = {'x': [0.80, 1], 'y': [0, 1]}))
 
         fig2.update_layout(
           autosize=False,
