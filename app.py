@@ -75,9 +75,30 @@ def main():
                   height=250
                           )
 
-
         st.plotly_chart(fig)
 
+        # whole country interactive choropleth map
+        ## data prep
+        df_whole_country_map = clean_country(total)
+
+        fig1 = go.Figure(data=go.Choropleth(
+            locations=df_whole_country_map['code'],
+            z=df_whole_country_map['Confirmed'],
+            locationmode='USA-states',
+            colorscale='Reds',
+            text=df_whole_country_map['text'],  # hover text
+            marker_line_color='black',  # line markers between states
+            colorbar_title="Total Confirmed Cases"
+        ))
+
+        fig1.update_layout(
+            title_text='Covid-19 Total Confirmed Cases by State<br>(Hover for Details)',
+            geo=dict(
+                scope='usa',
+                projection=go.layout.geo.Projection(type='albers usa')
+            ),
+        )
+        st.plotly_chart(fig1)
 
         '### Go to County Data'
         # filter target county
