@@ -7,3 +7,4 @@ scikit-learn ==0.21.3
 scipy==1.4.1
 altair==4.1.0
 plotly==4.7.1
+plotly-geo==1.0.0
