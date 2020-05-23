@@ -9,6 +9,8 @@ from SIR_Model import *
 from data_prep import *
 from scipy.integrate import odeint
 import plotly.graph_objects as go
+import plotly.figure_factory as ff
+
 
 
 
@@ -29,7 +31,7 @@ def main():
 
     if page == 'Data Exploratory':
         '## Explore the COVID-19 Stats in USA'
-        '### Quick Facts'
+        '### Quick Facts about the Whole Country'
         
         # load data 
         total = load_data('total_data.pkl')
@@ -100,13 +102,71 @@ def main():
         )
         st.plotly_chart(fig1)
 
+        # ------------------------- State Level -----------------------------------------------
+        '### Go to State Data'
+
+
+
+        # ------------------------- data process for state map --------------------------------
+        # select latest date
+        df_state = total[total['Date'] == total.iloc[-1].Date]
+
+        # select state name
+        mask = df_state.Combined_Key.str.split(',').str[1].str.lstrip()
+        # remove invalid state
+        df_state = df_state[~mask.isin(['US', 'Wuhan Evacuee'])]
+        # get all state name
+        state_list = sorted(df_state.Combined_Key.str.split(',').str[1].str.lstrip().unique())
+
+        # select target state
+        state = st.selectbox("Select a State", state_list,index = 32)
+        # filter out the target state data
+        df_state_map = df_state[df_state['Combined_Key'].str.contains(state)].copy()
+        # add state column
+        df_state_map['state'] = df_state_map['Combined_Key'].str.split(',').str[1].str.lstrip()
+
+        # make bins for map
+        bins = pd.qcut(df_state_map['Confirmed'], 5, precision=-1).sort_values().reset_index(drop=True)
+        bins = bins.astype('str').drop_duplicates().str.split('(').str[1].str.split(',').str[0].astype('float').tolist()
+
+        # draw the map
+        color_code_6 = ["#DEEBF7", "#C6DBEF", "#9ECAE1", "#6BAED6", "#4292C6", "#08519C"]
+        fips = df_state_map['FIPS'].tolist()
+        values = df_state_map['Confirmed'].tolist()
+
+        fig3 = ff.create_choropleth(
+            fips=fips, values=values,
+            binning_endpoints=bins,
+            scope=[df_state_map.state.iloc[1]],
+            show_hover=True,  # centroid_marker={'opacity': 0},
+            colorscale=color_code_6,
+        )
+        fig3.update_layout(
+            autosize=False,
+            width=700,
+            height=400,
+            margin=dict(
+                l=0,
+                r=0,
+                b=0,
+                t=0,
+                pad=4
+            ),
+            paper_bgcolor='white',
+         #   paper_bgcolor='rgb(233,233,233)',
+        )
+        st.plotly_chart(fig3)
+        # ------------------------------- County Level ----------------------------------------------------
         '### Go to County Data'
         # filter target county
-        county_name = total['Combined_Key'].unique()
+        # county_name = total['Combined_Key'].unique()
+        # county = st.selectbox("Select a County", county_name)
+        # df = total.loc[total['Combined_Key'] == county]
+        county_name = df_state_map['Combined_Key'].unique()
         county = st.selectbox("Select a County", county_name)
         df = total.loc[total['Combined_Key'] == county]
 
-        # drawing 
+        # drawing
         ## indicator plot
         fig2 = go.Figure()
 
@@ -136,48 +196,6 @@ def main():
           width=700,
           height=260)
         st.plotly_chart(fig2)
-
-        df_state = total[total['Date'] == total.iloc[-1].Date]
-
-        mask = df_state.Combined_Key.str.split(',').str[1].str.lstrip()
-        df_state = df_state.loc[~mask.isin(['US', 'Wuhan Evacuee'])]
-
-        state_list = df_state.Combined_Key.str.split(',').str[1].str.lstrip().unique()
-
-        state = st.selectbox("Select a State", state_list)
-        st.write(state)
-
-        df_state_map = df_state.loc[df_state['Combined_Key'].str.contains(state)]
-        st.write(df_state_map)
-        df_state_map['state'] = df_state_map.loc['Combined_Key'].str.split(',').str[1].str.lstrip()
-        st.write(df_state_map)
-
-        bins = pd.qcut(df_state_map['Confirmed'], 7).sort_values().reset_index(drop=True)
-        bins = bins.astype('str').drop_duplicates().str.split('(').str[1].str.split(',').str[0].astype('float').tolist()
-
-        import plotly.figure_factory as ff
-
-        # colorscale = ["#f7fbff","#ebf3fb","#deebf7","#d2e3f3","#c6dbef","#b3d2e9","#9ecae1",
-        #               "#85bcdb","#6baed6","#57a0ce","#4292c6","#3082be","#2171b5","#1361a9",
-        #               "#08519c","#0b4083","#08306b"]
-
-        colorscale = ["#f7fbff", "#deebf7", "#c6dbef",
-                      "#6baed6", "#4292c6", "#2171b5",
-                      "#08519c", "#08306b"]
-        fips = df_state_map['FIPS'].tolist()
-        values = df_state_map['Confirmed'].tolist()
-
-        fig3 = ff.create_choropleth(
-            fips=fips, values=values,
-            binning_endpoints=bins,
-            scope=df_state_map.state.iloc[1],
-            colorscale=colorscale,
-        )
-
-        fig3.layout.template = None
-        st.plotly_chart(fig3)
-
-        
 
 
 
