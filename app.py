@@ -137,6 +137,46 @@ def main():
           height=260)
         st.plotly_chart(fig2)
 
+        df_state = total[total['Date'] == total.iloc[-1].Date]
+
+        mask = df_state.Combined_Key.str.split(',').str[1].str.lstrip()
+        df_state = df_state.loc[~mask.isin(['US', 'Wuhan Evacuee'])]
+
+        state_list = df_state.Combined_Key.str.split(',').str[1].str.lstrip().unique()
+
+        state = st.selectbox("Select a State", state_list)
+        st.write(state)
+
+        df_state_map = df_state.loc[df_state['Combined_Key'].str.contains(state)]
+        st.write(df_state_map)
+        df_state_map['state'] = df_state_map.loc['Combined_Key'].str.split(',').str[1].str.lstrip()
+        st.write(df_state_map)
+
+        bins = pd.qcut(df_state_map['Confirmed'], 7).sort_values().reset_index(drop=True)
+        bins = bins.astype('str').drop_duplicates().str.split('(').str[1].str.split(',').str[0].astype('float').tolist()
+
+        import plotly.figure_factory as ff
+
+        # colorscale = ["#f7fbff","#ebf3fb","#deebf7","#d2e3f3","#c6dbef","#b3d2e9","#9ecae1",
+        #               "#85bcdb","#6baed6","#57a0ce","#4292c6","#3082be","#2171b5","#1361a9",
+        #               "#08519c","#0b4083","#08306b"]
+
+        colorscale = ["#f7fbff", "#deebf7", "#c6dbef",
+                      "#6baed6", "#4292c6", "#2171b5",
+                      "#08519c", "#08306b"]
+        fips = df_state_map['FIPS'].tolist()
+        values = df_state_map['Confirmed'].tolist()
+
+        fig3 = ff.create_choropleth(
+            fips=fips, values=values,
+            binning_endpoints=bins,
+            scope=df_state_map.state.iloc[1],
+            colorscale=colorscale,
+        )
+
+        fig3.layout.template = None
+        st.plotly_chart(fig3)
+
         
 
 
