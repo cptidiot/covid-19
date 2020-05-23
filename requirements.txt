@@ -8,3 +8,6 @@ scipy==1.4.1
 altair==4.1.0
 plotly==4.7.1
 plotly-geo==1.0.0
+geopandas==0.3.0
+pyshp==1.2.10
+shapely==1.6.3
