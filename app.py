@@ -287,8 +287,8 @@ def main():
         ## Model training
 
         # split train dataset
-        train_df = df2[df2['Date'] < df2.Date.iloc[-7]]
-        test_df = df2[(df2['Date'] > df2.Date.iloc[-7]) & (df2['Date'] < df2.Date.iloc[-1])]
+        train_df = df2[df2['Date'] < df2.Date.iloc[-12]]
+        test_df = df2[(df2['Date'] > df2.Date.iloc[-12]) & (df2['Date'] < df2.Date.iloc[-1])]
 
         # initialize model
         '## Training the Model'
