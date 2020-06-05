@@ -49,3 +49,5 @@ def clean(county_full_name_with_quotes):
 
     fill_recovery(county_pkl_name)
 
+clean('"New York City, New York, US"')
+
