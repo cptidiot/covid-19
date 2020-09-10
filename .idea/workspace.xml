@@ -110,47 +110,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="resolve confilt" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="40" y="125" width="1071" height="699" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589779469584">
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1599714137896">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="40" y="125" width="1071" height="699" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1589779469584" />
-    <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589923406385">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589400500114" />
-    <state x="258" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1589923406385" />
-    <state x="157" y="38" key="CommitChangelistDialog2" timestamp="1589402949060">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="157" y="38" key="CommitChangelistDialog2/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589402949060" />
-    <state width="1101" height="230" key="GridCell.Tab.0.bottom" timestamp="1589920324998">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1101" height="230" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1589920324998" />
-    <state width="1101" height="230" key="GridCell.Tab.0.center" timestamp="1589920324998">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1101" height="230" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1589920324998" />
-    <state width="1101" height="230" key="GridCell.Tab.0.left" timestamp="1589920324997">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1101" height="230" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1589920324997" />
-    <state width="1101" height="230" key="GridCell.Tab.0.right" timestamp="1589920324998">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1101" height="230" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1589920324998" />
-    <state x="0" y="100" key="SettingsEditor" timestamp="1589919377209">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="0" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1589919377209" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1596116891920">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/-1112.89.1112.811/0.23.1440.877@0.23.1440.877" timestamp="1589416117177" />
-    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1596116891920" />
-    <state x="226" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1589919348885">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="226" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1589919348885" />
+    <state x="374" y="296" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1599714137896" />
   </component>
 </project>
