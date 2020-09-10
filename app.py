@@ -293,8 +293,10 @@ def main():
         # initialize model
         '## Training the Model'
         with st.spinner('Model Training in Progress...'):
-            population = df2.Population[1]
-            model = Train_Dynamic_SIR(epoch=5000, data=train_df,
+          #  population = df2.Population[1]
+            population = 9000000
+            print(population)
+            model = Train_Dynamic_SIR(epoch=3000, data=train_df,
                                     population=population, gamma=1 / 15, c=1, b=-10, a=0.08)
 
             # train the model

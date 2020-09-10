@@ -49,6 +49,7 @@ class Train_Dynamic_SIR:
         return c * exp(-a * (t + b)) * pow((1 + exp(-a * (t + b))), -2)
 
     def _cal_loss(self):
+        print(mean_squared_error(self.I, self.I_pred))
         return mean_squared_error(self.I, self.I_pred)
 
     def _cal_MAPE(self):

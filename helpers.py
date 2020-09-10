@@ -17,6 +17,7 @@ def clean_country(df):
         'Colorado': 'CO',
         'Connecticut': 'CT',
         'Delaware': 'DE',
+        'District of Columbia ': 'DC',
         'District of Columbia': 'DC',
         'Florida': 'FL',
         'Georgia': 'GA',
